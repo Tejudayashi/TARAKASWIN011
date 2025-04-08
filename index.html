@@ -1,9 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- Prevent caching to make scraping harder -->
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>The Legacy of Tārak-Ashwin-011</title>
   <style>
     body {
@@ -13,6 +16,11 @@
       margin: 0;
       padding: 20px;
       line-height: 1.6;
+      /* Disable text selection */
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
     header {
       text-align: center;
@@ -44,7 +52,7 @@
     }
   </style>
 </head>
-<body>
+<body oncontextmenu="return false;" ondragstart="return false;" onselectstart="return false;">
   <header>
     <h1>The Legacy of Tārak-Ashwin-011</h1>
     <p>A symbolic path through forgotten energy, ancient knowledge, and encrypted history.</p>
@@ -88,11 +96,42 @@
   <section>
     <h2>Legacy Contact</h2>
     <p>If you are a researcher, historian, or truth-seeker and wish to know more—reach out directly to the one who walked this path: <strong>Tārak-Ashwin-011</strong>.</p>
+    <p>Contact: <a href="mailto:vprsaiuday@gmail.com">vprsaiuday@gmail.com</a></p>
     <p>This is not a myth. It is a map.</p>
   </section>
 
+  <section>
+    <h2>Disclaimer</h2>
+    <p>The information presented on this website is the original research and intellectual property of Tārak-Ashwin-011. It is provided for informational purposes only and does not constitute an endorsement or claim of absolute truth. The author assumes no liability for the use or interpretation of this content. Unauthorized use or reproduction is strictly prohibited under copyright law.</p>
+  </section>
+
   <footer>
-    &copy; 2025 Tārak-Ashwin-011. All legacy rights reserved.
+    <p>© 2025 Tārak-Ashwin-011. All legacy rights reserved.</p>
+    <p>Intellectual property protected by international copyright law. Unauthorized copying, reproduction, distribution, or modification of this content, in whole or in part, is strictly prohibited and may result in legal action. For permissions, contact: <a href="mailto:vprsaiuday@gmail.com">vprsaiuday@gmail.com</a></p>
   </footer>
+
+  <script>
+    // Disable right-click
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    
+    // Disable common copy shortcuts (Ctrl+C, Ctrl+X)
+    document.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey && (e.key === 'c' || e.key === 'x')) || 
+          (e.metaKey && (e.key === 'c' || e.key === 'x'))) {
+        e.preventDefault();
+        alert('Copying is disabled to protect the intellectual property of Tārak-Ashwin-011.');
+      }
+    });
+    
+    // Alert on developer tools opening (basic detection)
+    (function() {
+      let devtools = /./;
+      devtools.toString = function() {
+        alert('Please respect the copyright of Tārak-Ashwin-011. Developer tools access is monitored.');
+        return '';
+      }
+      console.log(devtools);
+    })();
+  </script>
 </body>
 </html>
