@@ -61,6 +61,27 @@
       padding: 100px 0;
       animation: fadeIn 1s ease-in;
     }
+    .login-form {
+      max-width: 300px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #1f2833;
+      border-radius: 6px;
+    }
+    .login-form label {
+      display: block;
+      margin-bottom: 5px;
+      color: #66fcf1;
+    }
+    .login-form input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #45a29e;
+      border-radius: 4px;
+      background-color: #0b0c10;
+      color: #c5c6c7;
+    }
     #login-btn {
       background-color: #66fcf1;
       color: #0b0c10;
@@ -103,12 +124,14 @@
       color: #ff0000;
       text-align: center;
       margin-top: 20px;
-      white-space: pre-wrap; /* Preserve line breaks for detailed errors */
+      white-space: pre-wrap;
+      max-height: 200px;
+      overflow-y: auto;
     }
   </style>
 </head>
 <body oncontextmenu="return false;" ondragstart="return false;" onselectstart="return false;">
-  <!-- Login Page with Coming Soon and Disclaimer -->
+  <!-- Login Page with Coming Soon, Disclaimer, and Form -->
   <div id="login-container">
     <header>
       <h1>The Legacy of Tārak-Ashwin-011</h1>
@@ -118,9 +141,16 @@
       <h2>Disclaimer</h2>
       <p>The information presented on this website is the original research and intellectual property of Tārak-Ashwin-011. It is provided for informational purposes only and does not constitute an endorsement or claim of absolute truth. The author assumes no liability for the use or interpretation of this content. Unauthorized use or reproduction is strictly prohibited under copyright law.</p>
     </section>
-    <p>Please log in to access the full content.</p>
-    <button id="login-btn">Log In</button>
-    <div id="debug"></div> <!-- Enhanced debug output -->
+    <div class="login-form">
+      <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <button type="button" id="login-btn">Log In</button>
+      </form>
+    </div>
+    <div id="debug"></div>
   </div>
 
   <!-- Main Content (Hidden until login) -->
@@ -182,7 +212,7 @@
   <!-- Auth0 SDK -->
   <script src="https://cdn.auth0.com/js/auth0-spa-js/2.1/auth0-spa-js.production.js"></script>
   <script>
-    // Auth0 Configuration with your credentials
+    // Auth0 Configuration
     const auth0 = new auth0.Auth0Client({
       domain: 'dev-1qtbe4kdvjm4tazb.us.auth0.com', // Your Auth0 domain
       clientId: 'UDfnqGIPDfFR6JzrNjhx6b2Lj5EDA8Sp', // Your Client ID
@@ -197,33 +227,53 @@
     const loginContainer = document.getElementById('login-container');
     const debug = document.getElementById('debug');
 
-    // Check if user is already logged in
-    async function checkAuth() {
+    // Function to log and display messages
+    function logMessage(message) {
+      console.log(message);
+      debug.textContent += message + '\n';
+    }
+
+    // Initialize Auth0 and check authentication
+    async function initializeAuth() {
       try {
+        logMessage('Initializing Auth0 client...');
         const isAuthenticated = await auth0.isAuthenticated();
+        logMessage(`isAuthenticated: ${isAuthenticated}`);
         if (isAuthenticated) {
           content.style.display = 'block';
           loginContainer.style.display = 'none';
-          debug.textContent = '';
+          logMessage('User authenticated. Content displayed.');
         } else {
           content.style.display = 'none';
           loginContainer.style.display = 'block';
-          debug.textContent = 'Not authenticated. Click "Log In" to proceed.';
+          logMessage('User not authenticated. Ready for login.');
         }
       } catch (error) {
-        debug.textContent = 'Auth0 Initialization Error: ' + error.message + '\nStack: ' + error.stack;
-        console.error('Auth0 Initialization Error:', error);
+        logMessage('Initialization Error: ' + error.message + '\nStack: ' + error.stack);
+        console.error('Initialization Error:', error);
       }
     }
 
-    // Login function
+    // Login function with form integration
     loginBtn.addEventListener('click', async () => {
       try {
-        debug.textContent = 'Attempting to log in...';
-        console.log('Login button clicked, initiating auth0.loginWithRedirect()');
-        await auth0.loginWithRedirect();
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        if (!username || !password) {
+          logMessage('Validation Error: Please fill in all fields.');
+          return;
+        }
+
+        logMessage('Login button clicked.');
+        logMessage('Initiating auth0.loginWithRedirect() with username/password...');
+        await auth0.loginWithRedirect({
+          username: username,
+          password: password
+        });
+        logMessage('Redirect should have started.');
       } catch (error) {
-        debug.textContent = 'Login Error: ' + error.message + '\nStack: ' + error.stack;
+        logMessage('Login Error: ' + error.message + '\nStack: ' + error.stack);
         console.error('Login Error:', error);
       }
     });
@@ -231,24 +281,27 @@
     // Logout function
     logoutBtn.addEventListener('click', async () => {
       try {
+        logMessage('Logging out...');
         await auth0.logout({ returnTo: 'https://tejudayashi.github.io/TARAKASWIN011/' });
+        logMessage('Logout initiated.');
       } catch (error) {
-        debug.textContent = 'Logout Error: ' + error.message + '\nStack: ' + error.stack;
+        logMessage('Logout Error: ' + error.message + '\nStack: ' + error.stack);
         console.error('Logout Error:', error);
       }
     });
 
-    // Handle redirect after login
+    // Handle redirect callback
     auth0.handleRedirectCallback().then(() => {
-      checkAuth();
+      logMessage('Redirect callback successful.');
+      initializeAuth();
     }).catch((error) => {
-      debug.textContent = 'Redirect Callback Error: ' + error.message + '\nStack: ' + error.stack;
+      logMessage('Redirect Callback Error: ' + error.message + '\nStack: ' + error.stack);
       console.error('Redirect Callback Error:', error);
-      checkAuth();
+      initializeAuth();
     });
 
-    // Initial check
-    checkAuth();
+    // Run initial check
+    initializeAuth();
 
     // Protection Scripts
     document.addEventListener('contextmenu', event => event.preventDefault());
