@@ -103,6 +103,7 @@
       color: #ff0000;
       text-align: center;
       margin-top: 20px;
+      white-space: pre-wrap; /* Preserve line breaks for detailed errors */
     }
   </style>
 </head>
@@ -119,7 +120,7 @@
     </section>
     <p>Please log in to access the full content.</p>
     <button id="login-btn">Log In</button>
-    <div id="debug"></div> <!-- Debug output -->
+    <div id="debug"></div> <!-- Enhanced debug output -->
   </div>
 
   <!-- Main Content (Hidden until login) -->
@@ -210,8 +211,8 @@
           debug.textContent = 'Not authenticated. Click "Log In" to proceed.';
         }
       } catch (error) {
-        debug.textContent = 'Auth0 Error: ' + error.message;
-        console.error('Auth0 Error:', error);
+        debug.textContent = 'Auth0 Initialization Error: ' + error.message + '\nStack: ' + error.stack;
+        console.error('Auth0 Initialization Error:', error);
       }
     }
 
@@ -219,9 +220,10 @@
     loginBtn.addEventListener('click', async () => {
       try {
         debug.textContent = 'Attempting to log in...';
+        console.log('Login button clicked, initiating auth0.loginWithRedirect()');
         await auth0.loginWithRedirect();
       } catch (error) {
-        debug.textContent = 'Login Error: ' + error.message;
+        debug.textContent = 'Login Error: ' + error.message + '\nStack: ' + error.stack;
         console.error('Login Error:', error);
       }
     });
@@ -231,7 +233,7 @@
       try {
         await auth0.logout({ returnTo: 'https://tejudayashi.github.io/TARAKASWIN011/' });
       } catch (error) {
-        debug.textContent = 'Logout Error: ' + error.message;
+        debug.textContent = 'Logout Error: ' + error.message + '\nStack: ' + error.stack;
         console.error('Logout Error:', error);
       }
     });
@@ -240,7 +242,7 @@
     auth0.handleRedirectCallback().then(() => {
       checkAuth();
     }).catch((error) => {
-      debug.textContent = 'Redirect Callback Error: ' + error.message;
+      debug.textContent = 'Redirect Callback Error: ' + error.message + '\nStack: ' + error.stack;
       console.error('Redirect Callback Error:', error);
       checkAuth();
     });
