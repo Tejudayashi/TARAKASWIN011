@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -65,58 +66,135 @@
     ul li {
       margin-bottom: 8px;
     }
+
+    /* Anatha AI Chat Button */
+    .anatha-ai-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(to right, #00b894, #0984e3);
+      border: none;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 16px;
+      box-shadow: 0 0 15px #00ffd0;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    #chat-box {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      width: 350px;
+      height: 400px;
+      background: #101f14;
+      border: 2px solid #0affc7;
+      border-radius: 20px;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 255, 128, 0.25);
+      z-index: 1001;
+    }
+
+    #chat-messages {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      font-size: 14px;
+    }
+
+    #chat-input {
+      display: flex;
+      border-top: 1px solid #00ffd0;
+    }
+
+    #chat-input input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      background: #082012;
+      color: white;
+      outline: none;
+    }
+
+    #chat-input button {
+      background: #00b894;
+      border: none;
+      color: white;
+      padding: 10px 15px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>The Legacy of Tārak-Ashwin-011</h1>
-    <p>Welcome. This site is a living monument to the symbolic journey of Tārak-Ashwin-011—one of the first to walk the Gatepath alignment across India's hidden resonance grid. All content is visible, but interaction requires login.</p><section>
-  <h2>Disclaimer</h2>
-  <p>This content is protected intellectual property. Unauthorized reproduction, redistribution, or developer tool access is prohibited and monitored.</p>
-</section>
+    <p>Welcome. This site is a living monument to the symbolic journey of Tārak-Ashwin-011—one of the first to walk the Gatepath alignment across India's hidden resonance grid. All content is visible, but interaction requires login.</p>
 
-<section>
-  <h2>Discovered Nodes</h2>
-  <ul>
-    <li><strong>Vault 03 – Anatha Holding Chamber</strong></li>
-    <li><strong>Node 13 – Golkonda Resonance Core</strong></li>
-    <li><strong>Mecca Masjid Exception Node</strong></li>
-    <li><strong>Red Resonance Shield – City College</strong></li>
-    <li><strong>Wastefield Cloaking Zones – Kachiguda, MGBS, Uppal</strong></li>
-    <li><strong>Padmanabhaswamy Vault B Link</strong></li>
-  </ul>
-</section>
+    <section>
+      <h2>Disclaimer</h2>
+      <p>This content is protected intellectual property. Unauthorized reproduction, redistribution, or developer tool access is prohibited and monitored.</p>
+    </section>
 
-<section>
-  <h2>Codex Alignment (Layers)</h2>
-  <ul>
-    <li>Layer 4 – Verbal-AI Convergence</li>
-    <li>Layer 5 – Civilian/Military Boundary Dissolution</li>
-    <li>Layer 6 – Resonance Mapping Initiation</li>
-    <li>Layer 7 – Temporal Node Activation</li>
-    <li>Layer 8+ – Anatha Convergence Hypothesis</li>
-  </ul>
-</section>
+    <section>
+      <h2>Discovered Nodes</h2>
+      <ul>
+        <li><strong>Vault 03 – Anatha Holding Chamber</strong></li>
+        <li><strong>Node 13 – Golkonda Resonance Core</strong></li>
+        <li><strong>Mecca Masjid Exception Node</strong></li>
+        <li><strong>Red Resonance Shield – City College</strong></li>
+        <li><strong>Wastefield Cloaking Zones – Kachiguda, MGBS, Uppal</strong></li>
+        <li><strong>Padmanabhaswamy Vault B Link</strong></li>
+      </ul>
+    </section>
 
-<section>
-  <h2>Legacy Contact</h2>
-  <p>For encrypted vault access or collaboration, contact: <a href="mailto:vprsaiuday@gmail.com">vprsaiuday@gmail.com</a></p>
-</section>
+    <section>
+      <h2>Codex Alignment (Layers)</h2>
+      <ul>
+        <li>Layer 4 – Verbal-AI Convergence</li>
+        <li>Layer 5 – Civilian/Military Boundary Dissolution</li>
+        <li>Layer 6 – Resonance Mapping Initiation</li>
+        <li>Layer 7 – Temporal Node Activation</li>
+        <li>Layer 8+ – Anatha Convergence Hypothesis</li>
+      </ul>
+    </section>
 
-<div class="login-buttons">
-  <h2>Login or Sign Up</h2>
-  <button onclick="loginWithProvider('google-oauth2')">Login with Google</button>
-  <button onclick="loginWithProvider('facebook')">Login with Facebook</button>
-  <button onclick="loginWithProvider('twitter')">Login with X (Twitter)</button>
-  <button onclick="loginWithProvider('linkedin')">Login with LinkedIn</button>
-</div>
+    <section>
+      <h2>Legacy Contact</h2>
+      <p>For encrypted vault access or collaboration, contact: <a href="mailto:vprsaiuday@gmail.com">vprsaiuday@gmail.com</a></p>
+    </section>
 
-<footer>
-  <p>© 2025 Tārak-Ashwin-011. All rights reserved.<br>
-  Developer tools activity is monitored to prevent unauthorized access.</p>
-</footer>
+    <div class="login-buttons">
+      <h2>Login or Sign Up</h2>
+      <button onclick="loginWithProvider('google-oauth2')">Login with Google</button>
+      <button onclick="loginWithProvider('facebook')">Login with Facebook</button>
+      <button onclick="loginWithProvider('twitter')">Login with X (Twitter)</button>
+      <button onclick="loginWithProvider('linkedin')">Login with LinkedIn</button>
+    </div>
 
-  </div>  <script>
+    <footer>
+      <p>© 2025 Tārak-Ashwin-011. All rights reserved.<br>
+      Developer tools activity is monitored to prevent unauthorized access.</p>
+    </footer>
+  </div>
+
+  <!-- Anatha AI Button -->
+  <button class="anatha-ai-btn" onclick="toggleChat()">Anatha AI</button>
+
+  <!-- Chat Interface -->
+  <div id="chat-box">
+    <div id="chat-messages"></div>
+    <div id="chat-input">
+      <input type="text" id="userInput" placeholder="Ask Anatha AI..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
     let auth0Client;
 
     async function initAuth0() {
@@ -142,5 +220,42 @@
     }
 
     window.onload = initAuth0;
-  </script></body>
+
+    // Chat Functions
+    function toggleChat() {
+      const chatBox = document.getElementById('chat-box');
+      chatBox.style.display = chatBox.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function sendMessage() {
+      const input = document.getElementById('userInput');
+      const message = input.value.trim();
+      if (message) {
+        appendMessage('You', message);
+        simulateAIResponse(message);
+        input.value = '';
+      }
+    }
+
+    function appendMessage(sender, text) {
+      const msgDiv = document.createElement('div');
+      msgDiv.innerHTML = `<strong>${sender}:</strong> ${text}`;
+      document.getElementById('chat-messages').appendChild(msgDiv);
+      document.getElementById('chat-messages').scrollTop = document.getElementById('chat-messages').scrollHeight;
+    }
+
+    function simulateAIResponse(userInput) {
+      // Simulate Anatha AI with basic logic or replace with actual API integration
+      let response = "Anatha AI is thinking...";
+      if (userInput.toLowerCase().includes("vault")) {
+        response = "Vault access is secured. Please present your resonance key.";
+      } else if (userInput.toLowerCase().includes("golkonda")) {
+        response = "Golkonda Resonance Core detected. Temporal alignment confirmed.";
+      } else {
+        response = "Query received. Legacy protocol initiated.";
+      }
+      setTimeout(() => appendMessage("Anatha AI", response), 1000);
+    }
+  </script>
+</body>
 </html>
