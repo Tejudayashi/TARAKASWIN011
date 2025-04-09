@@ -67,6 +67,7 @@
       padding: 20px;
       background: #1f2833;
       border-radius: 6px;
+      display: none; /* Hidden initially, shown if needed */
     }
     .login-form label {
       display: block;
@@ -141,15 +142,7 @@
       <h2>Disclaimer</h2>
       <p>The information presented on this website is the original research and intellectual property of Tārak-Ashwin-011. It is provided for informational purposes only and does not constitute an endorsement or claim of absolute truth. The author assumes no liability for the use or interpretation of this content. Unauthorized use or reproduction is strictly prohibited under copyright law.</p>
     </section>
-    <div class="login-form">
-      <form id="loginForm">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br><br>
-        <button type="button" id="login-btn">Log In</button>
-      </form>
-    </div>
+    <button id="login-btn">Log In</button>
     <div id="debug"></div>
   </div>
 
@@ -217,7 +210,8 @@
       domain: 'dev-1qtbe4kdvjm4tazb.us.auth0.com', // Your Auth0 domain
       clientId: 'UDfnqGIPDfFR6JzrNjhx6b2Lj5EDA8Sp', // Your Client ID
       authorizationParams: {
-        redirect_uri: 'https://tejudayashi.github.io/TARAKASWIN011/' // Your GitHub Pages URL
+        redirect_uri: 'https://tejudayashi.github.io/TARAKASWIN011/',
+        screen_hint: 'login' // Ensures login screen is shown
       }
     });
 
@@ -254,22 +248,16 @@
       }
     }
 
-    // Login function with form integration
+    // Login function to redirect to Auth0 Universal Login
     loginBtn.addEventListener('click', async () => {
       try {
-        const username = document.getElementById('username').value.trim();
-        const password = document.getElementById('password').value.trim();
-
-        if (!username || !password) {
-          logMessage('Validation Error: Please fill in all fields.');
-          return;
-        }
-
         logMessage('Login button clicked.');
-        logMessage('Initiating auth0.loginWithRedirect() with username/password...');
+        logMessage('Redirecting to Auth0 Universal Login...');
         await auth0.loginWithRedirect({
-          username: username,
-          password: password
+          authorizationParams: {
+            screen_hint: 'login', // Ensures login/signup options are shown
+            connection: 'google-oauth2' // Optional: Can prioritize Google, but Universal Login will still show all options
+          }
         });
         logMessage('Redirect should have started.');
       } catch (error) {
