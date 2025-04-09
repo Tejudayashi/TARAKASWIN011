@@ -184,7 +184,7 @@
     // Auth0 Configuration with your credentials
     const auth0 = new auth0.Auth0Client({
       domain: 'dev-1qtbe4kdvjm4tazb.us.auth0.com', // Your Auth0 domain
-      clientId: 'UDfnqGIPDfFR6JzrNjhx6b2Lj5EDA8Sp', // Your Client ID as provided
+      clientId: 'UDfnqGIPDfFR6JzrNjhx6b2Lj5EDA8Sp', // Your Client ID
       authorizationParams: {
         redirect_uri: 'https://tejudayashi.github.io/TARAKASWIN011/' // Your GitHub Pages URL
       }
@@ -218,6 +218,7 @@
     // Login function
     loginBtn.addEventListener('click', async () => {
       try {
+        debug.textContent = 'Attempting to log in...';
         await auth0.loginWithRedirect();
       } catch (error) {
         debug.textContent = 'Login Error: ' + error.message;
