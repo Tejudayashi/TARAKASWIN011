@@ -119,8 +119,7 @@
     <button id="login-btn">Log In</button>
     <button class="social-btn" onclick="loginWithSocial('facebook')">Login with Facebook</button>
     <button class="social-btn" onclick="loginWithSocial('linkedin')">Login with LinkedIn</button>
-    <button class="social-btn" onclick="loginWithSocial('google')">Login with Google</button>
-    <button class="social-btn" onclick="loginWithSocial('github')">Login with GitHub</button>
+    <button class="social-btn" onclick="loginWithSocial('google-oauth2')">Login with Google</button>
     <div id="debug"></div>
   </div>
 
@@ -201,33 +200,24 @@
     const loginContainer = document.getElementById('login-container');
     const debug = document.getElementById('debug');
 
+    function logMessage(message) {
+      console.log(message);
+      debug.textContent += message + '\n';
+    }
+
     async function initializeAuth() {
       try {
+        logMessage('Initializing Auth0...');
         const isAuthenticated = await auth0.isAuthenticated();
+        logMessage(`Authenticated: ${isAuthenticated}`);
         if (isAuthenticated) {
           content.style.display = 'block';
           loginContainer.style.display = 'none';
+          logMessage('Content shown.');
         } else {
           content.style.display = 'none';
           loginContainer.style.display = 'block';
+          logMessage('Ready for login.');
         }
       } catch (error) {
-        console.error(error);
-      }
-    }
-
-    function loginWithSocial(connection) {
-      auth0.loginWithRedirect({ connection })
-        .catch(error => console.error('Login Error:', error));
-    }
-
-    loginBtn.addEventListener('click', () => loginWithSocial(''));
-    logoutBtn.addEventListener('click', () => {
-      auth0.logout({ returnTo: 'https://tejudayashi.github.io/TARAKASWIN011/' });
-    });
-
-    auth0.handleRedirectCallback().then(() => initializeAuth()).catch(() => initializeAuth());
-    initializeAuth();
-  </script>
-</body>
-</html>
+        logMessage('Error: ' + error.message + '\n' + error.stack
