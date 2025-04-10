@@ -167,14 +167,19 @@
       border-radius: 50px;
       cursor: pointer;
       transition: all 0.4s ease;
-      animation: bounceIn 1.8s ease-out;
       transform-style: preserve-3d;
+      opacity: 0; /* Start transparent */
+      animation: fadeInCrypto 1.8s ease-out forwards;
     }
-    @keyframes bounceIn {
-      0% { transform: scale(0); opacity: 0; }
-      60% { transform: scale(1.2); opacity: 1; }
-      100% { transform: scale(1); }
+    @keyframes fadeInCrypto {
+      0% { opacity: 0; transform: scale(0); }
+      60% { opacity: 0.5; transform: scale(1.2); }
+      100% { opacity: 1; transform: scale(1); }
     }
+    .crypto-buttons button:nth-child(1) { animation-delay: 0.2s; }
+    .crypto-buttons button:nth-child(2) { animation-delay: 0.4s; }
+    .crypto-buttons button:nth-child(3) { animation-delay: 0.6s; }
+    .crypto-buttons button:nth-child(4) { animation-delay: 0.8s; }
     .crypto-buttons button:hover { 
       transform: scale(1.1) rotateX(15deg) rotateY(15deg); 
       box-shadow: 0 5px 15px rgba(0, 255, 204, 0.6); 
@@ -390,7 +395,7 @@
       }
       animateParticles();
     }
-    // 3D Animation with Three.js
+    // 3D Animation with Three.js (Sphere + Egg Breaking to Bitcoin)
     function initThreeJS() {
       const canvas = document.getElementById('threeCanvas');
       const scene = new THREE.Scene();
@@ -398,22 +403,64 @@
       const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
       renderer.setSize(window.innerWidth, window.innerHeight);
 
-      const geometry = new THREE.SphereGeometry(5, 32, 32);
-      const material = new THREE.MeshBasicMaterial({ 
+      // Background Sphere
+      const sphereGeometry = new THREE.SphereGeometry(5, 32, 32);
+      const sphereMaterial = new THREE.MeshBasicMaterial({ 
         color: 0x00ffcc, 
         wireframe: true, 
         transparent: true, 
         opacity: 0.7 
       });
-      const sphere = new THREE.Mesh(geometry, material);
+      const sphere = new THREE.Mesh(sphereGeometry, material);
       scene.add(sphere);
 
+      // Egg Animation
+      let egg, bitcoin;
+      const eggGeometry = new THREE.SphereGeometry(2, 32, 16, 0, Math.PI * 2, 0, Math.PI / 2); // Egg-like shape
+      const eggMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true });
+      egg = new THREE.Mesh(eggGeometry, eggMaterial);
+      scene.add(egg);
+
+      // Bitcoin Symbol
+      const bitcoinGeometry = new THREE.TextGeometry('₿', {
+        font: new THREE.Font({}), // Note: Requires a font loader for proper text, using placeholder
+        size: 3,
+        height: 0.5,
+      });
+      const bitcoinMaterial = new THREE.MeshBasicMaterial({ color: 0xf7931a }); // Bitcoin orange
+      bitcoin = new THREE.Mesh(bitcoinGeometry, bitcoinMaterial);
+      bitcoin.visible = false;
+      scene.add(bitcoin);
+
       camera.position.z = 15;
+
+      let eggBreaking = false;
+      let eggScale = 1;
+      let bitcoinScale = 0;
 
       function animate() {
         requestAnimationFrame(animate);
         sphere.rotation.x += 0.01;
         sphere.rotation.y += 0.01;
+
+        // Egg breaking animation after 2 seconds
+        if (!eggBreaking && performance.now() > 2000) {
+          eggBreaking = true;
+        }
+        if (eggBreaking) {
+          eggScale -= 0.05;
+          if (eggScale > 0) {
+            egg.scale.set(eggScale, eggScale, eggScale);
+          } else {
+            egg.visible = false;
+            bitcoin.visible = true;
+            bitcoinScale += 0.05;
+            if (bitcoinScale < 1) {
+              bitcoin.scale.set(bitcoinScale, bitcoinScale, bitcoinScale);
+            }
+          }
+        }
+
         renderer.render(scene, camera);
       }
       animate();
