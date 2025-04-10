@@ -24,7 +24,7 @@
       width: 100%; 
       height: 100%; 
       z-index: -1; 
-      opacity: 0.3; 
+      opacity: 0.5;
     }
     canvas#threeCanvas { 
       position: fixed; 
@@ -193,7 +193,7 @@
       from { transform: translateY(-100%); }
       to { transform: translateY(0); }
     }
-    .navbar a {
+    .navbar 🙂a {
       margin: 0 10px;
       text-decoration: none;
       color: #fff;
@@ -389,7 +389,7 @@
       }
       animateParticles();
     }
-    // 3D Animation with Three.js (Charts, Egg, Coins)
+    // 3D Animation with Three.js (Highly Visible Charts, Egg, Coins)
     function initThreeJS() {
       const canvas = document.getElementById('threeCanvas');
       const scene = new THREE.Scene();
@@ -397,88 +397,87 @@
       const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
       renderer.setSize(window.innerWidth, window.innerHeight);
 
-      // Background Charts (Simple Planes Moving Up/Down)
-      const chartGeometry = new THREE.PlaneGeometry(2, 1);
-      const chartMaterial = new THREE.MeshBasicMaterial({ color: 0x00ffcc, wireframe: true, transparent: true, opacity: 0.5 });
+      // Background Charts (Highly Visible)
+      const chartGeometry = new THREE.PlaneGeometry(5, 3);
+      const chartMaterial = new THREE.MeshBasicMaterial({ color: 0x00FFFF, wireframe: true, opacity: 0.8, transparent: true });
       const charts = [];
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 15; i++) {
         const chart = new THREE.Mesh(chartGeometry, chartMaterial);
         chart.position.set(
+          (Math.random() - 0.5) * 40,
           (Math.random() - 0.5) * 30,
-          (Math.random() - 0.5) * 20,
           (Math.random() - 0.5) * 10 - 10
         );
-        chart.userData = { speed: Math.random() * 0.05 + 0.02, baseY: chart.position.y };
+        chart.userData = { speed: Math.random() * 0.08 + 0.04, baseY: chart.position.y };
         scene.add(chart);
         charts.push(chart);
       }
 
-      // Egg Animation
-      const eggGeometry = new THREE.SphereGeometry(2, 32, 16, 0, Math.PI * 2, 0, Math.PI / 2);
-      const eggMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true });
+      // Egg Animation (Clear Egg Shape)
+      const eggGeometry = new THREE.SphereGeometry(3, 32, 32);
+      const eggMaterial = new THREE.MeshBasicMaterial({ color: 0xFFFFFF });
       const egg = new THREE.Mesh(eggGeometry, eggMaterial);
-      egg.position.set(0, 15, 0); // Start above screen
+      egg.position.set(0, 20, 0);
       scene.add(egg);
 
-      // Coins Animation
+      // Coins Animation (Bright and Visible)
       const coins = [];
-      const coinSymbols = ['₿', 'Ξ', 'X', 'B']; // BTC, ETH, XRP, BNB
-      const coinColors = [0xf7931a, 0x627eea, 0x222222, 0xf0b90b]; // Orange, Blue, Black, Yellow
+      const coinSymbols = ['₿', 'Ξ', 'X', 'B'];
+      const coinColors = [0xFFCC00, 0x00CCFF, 0xFFFFFF, 0xFFFF00];
       coinSymbols.forEach((symbol, index) => {
-        const coinGeometry = new THREE.TextGeometry(symbol, { size: 1.5, height: 0.2 });
+        const coinGeometry = new THREE.TextGeometry(symbol, { size: 2, height: 0.5 });
         const coinMaterial = new THREE.MeshBasicMaterial({ color: coinColors[index] });
         const coin = new THREE.Mesh(coinGeometry, coinMaterial);
         coin.position.set(0, 0, 0);
         coin.visible = false;
-        coin.userData = { speedY: Math.random() * 0.1 + 0.05 };
+        coin.userData = { speedY: Math.random() * 0.08 + 0.04 };
         scene.add(coin);
         coins.push(coin);
       });
 
-      camera.position.z = 20;
+      camera.position.z = 25;
 
       let eggDropping = true;
       let eggBreaking = false;
       let coinsFlying = false;
-      let eggY = 15;
-      let eggScale = 1;
+      let eggY = 20;
 
       function animate() {
         requestAnimationFrame(animate);
 
-        // Animate Background Charts
+        // Animate Background Charts (Highly Visible)
         charts.forEach(chart => {
-          chart.position.y = chart.userData.baseY + Math.sin(Date.now() * chart.userData.speed * 0.001) * 5;
-          chart.rotation.z += 0.01;
+          chart.position.y = chart.userData.baseY + Math.sin(Date.now() * chart.userData.speed * 0.001) * 10;
+          chart.rotation.z += 0.02;
         });
 
         // Egg Drop and Break
         if (eggDropping) {
-          eggY -= 0.1;
+          eggY -= 0.08;
           egg.position.y = eggY;
-          if (eggY <= 0) {
+          if (eggY <= -5) {
             eggDropping = false;
             eggBreaking = true;
           }
         }
         if (eggBreaking) {
-          eggScale -= 0.05;
-          if (eggScale > 0) {
-            egg.scale.set(eggScale, eggScale, eggScale);
-          } else {
+          egg.scale.x -= 0.03;
+          egg.scale.y -= 0.03;
+          egg.scale.z -= 0.03;
+          if (egg.scale.x <= 0) {
             egg.visible = false;
             coinsFlying = true;
             coins.forEach(coin => (coin.visible = true));
           }
         }
 
-        // Coins Fly to Top
+        // Coins Fly to Top (Clearly Visible)
         if (coinsFlying) {
           coins.forEach(coin => {
             coin.position.y += coin.userData.speedY;
-            coin.rotation.x += 0.05;
-            coin.rotation.y += 0.05;
-            if (coin.position.y > 20) coin.visible = false; // Hide when off-screen
+            coin.rotation.x += 0.03;
+            coin.rotation.y += 0.03;
+            if (coin.position.y > 25) coin.visible = false;
           });
         }
 
