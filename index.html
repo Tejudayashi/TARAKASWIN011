@@ -1,60 +1,38 @@
-<!DOCTYPE html><html lang="en"><head>
-  <meta name="ownership" content="The Legacy of Tārak-Ashwin-011 secured on 2025-04-10 - ProofHash: 7c26e2a6090e43a546b0c4e91d6cfc1760e65d548fc7496e3f75b2a51b2a7f0f">
+<!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Legacy of Tārak-Ashwin-011</title>
-  <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13.6/auth0-spa-js.production.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    html { scroll-behavior: smooth; }
-    body { 
-      margin: 0; 
-      font-family: 'Ubuntu', sans-serif; 
-      background: #000000; /* Simplified to plain black */
-      color: #ffffff; 
-      padding: 20px; 
-      overflow-x: hidden; 
-      position: relative; 
+    body {
+      margin: 0;
+      font-family: 'Ubuntu', sans-serif;
+      background: #000;
+      color: #fff;
+      padding: 20px;
     }
-    canvas#particles { 
-      position: fixed; 
-      top: 0; 
-      left: 0; 
-      width: 100%; 
-      height: 100%; 
-      z-index: -1; 
-      opacity: 0.5;
+    .navbar {
+      padding: 10px;
+      border-bottom: 2px solid #00ffcc;
+      text-align: center;
     }
-    canvas#threeCanvas { 
-      position: fixed; 
-      top: 0; 
-      left: 0; 
-      width: 100%; 
-      height: 100%; 
-      z-index: -2; 
+    .navbar a {
+      margin: 0 10px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
     }
-    h1, h2, h3 { 
-      font-family: 'Orbitron', sans-serif; 
-      color: #00ffcc; 
-      text-shadow: 0 0 10px rgba(0, 255, 204, 0.8); 
-      animation: glow 2s infinite alternate; 
+    .container, section, footer {
+      max-width: 900px;
+      margin: auto;
+      padding: 30px;
     }
-    @keyframes glow {
-      0% { text-shadow: 0 0 10px rgba(0, 255, 204, 0.8); }
-      100% { text-shadow: 0 0 20px rgba(0, 255, 204, 0.5); }
+    h1, h2 {
+      color: #00ffcc;
+      font-family: 'Orbitron', sans-serif;
     }
-    .container { 
-      max-width: 900px; 
-      margin: auto; 
-      padding: 30px; 
-      background: rgba(20, 20, 20, 0.9); /* Removed shadows and gradients for simplicity */
-      border-radius: 0; /* Removed rounded corners */
-      position: relative; 
-      z-index: 1; 
-      animation: none; /* Removed fade animation */
-    }
-    .login-buttons { margin-top: 30px; }
     button {
       display: block;
       width: 100%;
@@ -63,141 +41,17 @@
       font-size: 16px;
       font-weight: bold;
       color: #fff;
-      background: #00ffcc; /* Simplified to solid color */
+      background: #00ffcc;
       border: none;
-      border-radius: 0; /* Removed rounded corners */
       cursor: pointer;
-      transition: none; /* Removed transitions for simplicity */
-      position: relative;
-      overflow: hidden;
-      animation: none; /* Removed slide animation */
-      transform-style: preserve-3d;
-    }
-    button::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      background: rgba(255, 255, 255, 0.3);
-      border-radius: 0;
-      transform: translate(-50%, -50%);
-      transition: none;
-    }
-    button:hover::after {
-      width: 0;
-      height: 0;
-    }
-    button:hover { 
-      transform: none; 
-      box-shadow: none; 
-    }
-    .coin-launch-button {
-      background: none;
-      border: none;
-      font-size: 18px;
-      font-weight: bold;
-      color: #ff007a;
-      text-align: center;
-      cursor: pointer;
-      margin: 30px 0;
-      animation: none; /* Removed orbit animation */
-      text-shadow: none;
-    }
-    section {
-      background: rgba(30, 30, 30, 0.9);
-      padding: 20px;
-      border-radius: 0; /* Removed rounded corners */
-      margin: 20px 0;
-      box-shadow: none; /* Removed shadow */
-      animation: none; /* Removed fade animation */
-    }
-    footer {
-      text-align: center;
-      font-size: 0.85em;
-      margin-top: 40px;
-      color: #ccc;
-      animation: none; /* Removed fade animation */
-    }
-    ul li { 
-      margin-bottom: 8px; 
-      transition: none; /* Removed transition */
-      position: relative; 
-    }
-    ul li:hover { 
-      transform: none; 
-      color: #00ffcc; 
-    }
-    ul li:hover::after { 
-      content: " - Resonance node detail."; 
-      color: #888; 
-      font-size: 0.8em; 
-      position: absolute; 
-      left: 100%; 
-      top: 0; 
     }
     .crypto-buttons button {
       display: inline-block;
-      width: auto;
-      padding: 8px 12px;
+      padding: 10px 15px;
       margin: 5px;
-      font-size: 14px;
-      background: #00ffcc; /* Simplified to solid color */
+      background: #00ffcc;
       color: #fff;
       border: none;
-      border-radius: 0; /* Removed rounded corners */
-      cursor: pointer;
-      transition: none; /* Removed transition */
-      animation: none; /* Removed bounce animation */
-      transform-style: preserve-3d;
-    }
-    .crypto-buttons button:hover { 
-      transform: none; 
-      box-shadow: none; 
-    }
-    .navbar {
-      position: sticky;
-      top: 0;
-      background: rgba(20, 20, 20, 0.95);
-      padding: 10px 0;
-      text-align: center;
-      border-bottom: 2px solid #00ffcc;
-      z-index: 1000;
-      box-shadow: none; /* Removed shadow */
-      animation: none; /* Removed slide animation */
-    }
-    .navbar a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: #fff;
-      font-weight: bold;
-      transition: none; /* Removed transition */
-      position: relative;
-    }
-    .navbar a:hover { 
-      color: #ff007a; 
-      text-shadow: none; 
-    }
-    .navbar a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -5px;
-      left: 0;
-      background: #ff007a;
-      transition: none;
-    }
-    .navbar a:hover::after { width: 0; }
-    .countdown {
-      text-align: center;
-      font-size: 20px;
-      font-weight: bold;
-      margin: 20px 0;
-      color: #00ffcc;
-      text-shadow: none; /* Removed shadow */
-      animation: none; /* Removed pulse animation */
     }
     .ticker {
       background: rgba(0, 255, 204, 0.1);
@@ -205,31 +59,23 @@
       text-align: center;
       font-family: 'Orbitron', sans-serif;
       color: #00ffcc;
-      position: sticky;
-      top: 60px;
-      z-index: 999;
     }
-    #social-feed iframe {
-      width: 100%;
-      height: 400px;
-      border: none;
-      background: rgba(30, 30, 30, 0.9);
-      border-radius: 0; /* Removed rounded corners */
+    .countdown {
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      margin: 20px 0;
+      color: #00ffcc;
     }
-    .visitor-counter {
-      font-family: 'Orbitron', sans-serif;
-      color: #ff007a;
-      text-shadow: none; /* Removed shadow */
-    }
-    .login-buttons button:active {
-      animation: none; /* Removed ripple animation */
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #ccc;
     }
   </style>
-<meta name="ownership" content="The Legacy of Tārak-Ashwin-011 secured on 2025-04-10 - ProofHash: PLACEHOLDER_HASH">
 </head>
 <body>
-  <canvas id="particles"></canvas>
-  <canvas id="threeCanvas"></canvas>
+
   <div class="navbar">
     <a href="#top">Home</a>
     <a href="#nodes">Nodes</a>
@@ -237,80 +83,81 @@
     <a href="#charts">Charts</a>
     <a href="#contact">Contact</a>
   </div>
-  <!-- Crypto Price Ticker -->
+
   <div class="ticker">
     <span id="price-ticker">Loading prices...</span>
   </div>
+
   <div class="container" id="top">
     <h1>The Legacy of Tārak-Ashwin-011</h1>
     <p>Welcome. This site is a living monument to the symbolic journey...</p>
+
     <div style="text-align: center;">
-  <button class="coin-launch-button">TRARANKAASWIN011 COIN LAUNCHING SOON</button>
-  <div class="countdown" id="countdown"></div>
-</div><section class="login-buttons">
-  <h2>Login or Sign Up</h2>
-  <button onclick="loginWithProvider('google-oauth2')">Login with Google</button>
-  <button onclick="loginWithProvider('facebook')">Login with Facebook</button>
-  <button onclick="loginWithProvider('twitter')">Login with X (Twitter)</button>
-  <button onclick="loginWithProvider('linkedin')">Login with LinkedIn</button>
-</section><section id="nodes">
-  <h2>Discovered Nodes</h2>
-  <ul>
-    <li>Vault 03 – Anatha Holding Chamber</li>
-    <li>Node 13 – Golkonda Resonance Core</li>
-    <li>Mecca Masjid Exception Node</li>
-    <li>Red Resonance Shield – City College</li>
-    <li>Wastefield Cloaking Zones – Kachiguda, MGBS, Uppal</li>
-    <li>Padmanabhaswamy Vault B Link</li>
-  </ul>
-</section>
+      <button class="coin-launch-button">TRARANKAASWIN011 COIN LAUNCHING SOON</button>
+      <div class="countdown" id="countdown"></div>
+    </div>
 
-<section id="codex">
-  <h2>Codex Alignment (Layers)</h2>
-  <ul>
-    <li>Layer 4 – Verbal-AI Convergence</li>
-    <li>Layer 5 – Civilian/Military Boundary Dissolution</li>
-    <li>Layer 6 – Resonance Mapping Initiation</li>
-    <li>Layer 7 – Temporal Node Activation</li>
-    <li>Layer 8+ – Anatha Convergence Hypothesis</li>
-  </ul>
-</section>
+    <section class="login-buttons">
+      <h2>Login or Sign Up</h2>
+      <button onclick="loginWithProvider('google-oauth2')">Login with Google</button>
+      <button onclick="loginWithProvider('facebook')">Login with Facebook</button>
+      <button onclick="loginWithProvider('twitter')">Login with X (Twitter)</button>
+      <button onclick="loginWithProvider('linkedin')">Login with LinkedIn</button>
+    </section>
 
-<section id="charts">
-  <h2>Live Cryptocurrency Charts</h2>
-  <div class="crypto-buttons" style="text-align: center;">
-    <button onclick="updateChart('BINANCE:BTCUSDT')">BTC</button>
-    <button onclick="updateChart('BINANCE:ETHUSDT')">ETH</button>
-    <button onclick="updateChart('BINANCE:XRPUSDT')">XRP</button>
-    <button onclick="updateChart('BINANCE:BNBUSDT')">BNB</button>
+    <section id="nodes">
+      <h2>Discovered Nodes</h2>
+      <ul>
+        <li>Vault 03 – Anatha Holding Chamber</li>
+        <li>Node 13 – Golkonda Resonance Core</li>
+        <li>Mecca Masjid Exception Node</li>
+        <li>Red Resonance Shield – City College</li>
+        <li>Wastefield Cloaking Zones – Kachiguda, MGBS, Uppal</li>
+        <li>Padmanabhaswamy Vault B Link</li>
+      </ul>
+    </section>
+
+    <section id="codex">
+      <h2>Codex Alignment (Layers)</h2>
+      <ul>
+        <li>Layer 4 – Verbal-AI Convergence</li>
+        <li>Layer 5 – Civilian/Military Boundary Dissolution</li>
+        <li>Layer 6 – Resonance Mapping Initiation</li>
+        <li>Layer 7 – Temporal Node Activation</li>
+        <li>Layer 8+ – Anatha Convergence Hypothesis</li>
+      </ul>
+    </section>
+
+    <section id="charts">
+      <h2>Live Cryptocurrency Charts</h2>
+      <div class="crypto-buttons" style="text-align: center;">
+        <button onclick="updateChart('BINANCE:BTCUSDT')">BTC</button>
+        <button onclick="updateChart('BINANCE:ETHUSDT')">ETH</button>
+        <button onclick="updateChart('BINANCE:XRPUSDT')">XRP</button>
+        <button onclick="updateChart('BINANCE:BNBUSDT')">BNB</button>
+      </div>
+      <div style="max-width: 100%; overflow: hidden;">
+        <iframe id="cryptoChartFrame" src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_widget&symbol=BINANCE%3ABTCUSDT&interval=15&theme=dark" style="width: 100%; height: 420px; border: none;"></iframe>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Legacy Contact</h2>
+      <p>Email: <a href="mailto:vprsaiuday@gmail.com">vprsaiuday@gmail.com</a></p>
+    </section>
+
+    <section>
+      <h2>Disclaimer</h2>
+      <p><strong>Copyright Notice:</strong> All content on this website is protected under international intellectual property and cyber law. Reproduction, copying, screen recording, redistribution, or mirroring of this content is strictly prohibited without explicit permission.</p>
+      <p>This website is monitored. Developer activity and unauthorized access attempts are tracked. Violators will be prosecuted under applicable sections of international digital protection laws including the IT Act, DMCA, and GDPR regulations.</p>
+    </section>
+
+    <footer>
+      <p>Back to <a href="#top">Top</a> | © 2025 Tārak-Ashwin-011 | Visitors: <span id="visitor-count">0</span></p>
+    </footer>
   </div>
-  <div style="max-width: 100%; overflow: hidden;">
-    <iframe id="cryptoChartFrame" src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_widget&symbol=BINANCE%3ABTCUSDT&interval=15&theme=dark" style="width: 100%; height: 420px; border: none;"></iframe>
-  </div>
-</section>
 
-<section id="contact">
-  <h2>Legacy Contact</h2>
-  <p>Email: <a href="mailto:vprsaiuday@gmail.com">vprsaiuday@gmail.com</a></p>
-</section>
-
-<section>
-  <h2>Disclaimer</h2>
-  <p><strong>Copyright Notice:</strong> All content on this website is protected under international intellectual property and cyber law. Reproduction, copying, screen recording, redistribution, or mirroring of this content is strictly prohibited without explicit permission.</p>
-  <p>This website is monitored. Developer activity and unauthorized access attempts are tracked. Violators will be prosecuted under applicable sections of international digital protection laws including the IT Act, DMCA, and GDPR regulations.</p>
-</section>
-
-<!-- Updated Social Media Feed with Google News for Crypto/E-commerce/Finance -->
-<section id="social-feed">
-  <h2>Crypto & Finance Updates (News Feed)</h2>
-  <iframe src="https://news.google.com/embed?hl=en-US&q=cryptocurrency+finance+ecommerce&gl=US&ceid=US:en" scrolling="auto"></iframe>
-</section>
-
-<footer>
-  <p>Back to <a href="#top">Top</a> | © 2025 Tārak-Ashwin-011 | <span class="visitor-counter">Visitors: <span id="visitor-count">0</span></span></p>
-</footer>
-
-  </div>  <script>
+  <script>
     let auth0Client;
     async function initAuth0() {
       auth0Client = await createAuth0Client({
@@ -344,166 +191,6 @@
         document.getElementById("countdown").innerHTML = `${d}d ${h}h ${m}m ${s}s until launch`;
       }, 1000);
     }
-    // Particle Animation with Mouse Interaction
-    function initParticles() {
-      const canvas = document.getElementById('particles');
-      const ctx = canvas.getContext('2d');
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      let particlesArray = [];
-      const numberOfParticles = 100;
-      let mouse = { x: null, y: null, radius: 100 };
-
-      canvas.addEventListener('mousemove', (event) => {
-        mouse.x = event.x;
-        mouse.y = event.y;
-      });
-
-      class Particle {
-        constructor() {
-          this.x = Math.random() * canvas.width;
-          this.y = Math.random() * canvas.height;
-          this.size = Math.random() * 5 + 1;
-          this.speedX = Math.random() * 1 - 0.5;
-          this.speedY = Math.random() * 1 - 0.5;
-        }
-        update() {
-          this.x += this.speedX;
-          this.y += this.speedY;
-          if (this.size > 0.2) this.size -= 0.01;
-
-          // Mouse interaction
-          let dx = mouse.x - this.x;
-          let dy = mouse.y - this.y;
-          let distance = Math.sqrt(dx * dx + dy * dy);
-          if (distance < mouse.radius) {
-            let forceDirectionX = dx / distance;
-            let forceDirectionY = dy / distance;
-            let force = (mouse.radius - distance) / mouse.radius;
-            this.speedX -= forceDirectionX * force * 0.5;
-            this.speedY -= forceDirectionY * force * 0.5;
-          }
-        }
-        draw() {
-          ctx.fillStyle = 'rgba(0, 255, 204, 0.8)';
-          ctx.beginPath();
-          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-          ctx.fill();
-        }
-      }
-
-      for (let i = 0; i < numberOfParticles; i++) {
-        particlesArray.push(new Particle());
-      }
-
-      function animateParticles() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        for (let i = 0; i < particlesArray.length; i++) {
-          particlesArray[i].update();
-          particlesArray[i].draw();
-          if (particlesArray[i].size <= 0.2) {
-            particlesArray.splice(i, 1);
-            i--;
-            particlesArray.push(new Particle());
-          }
-        }
-        requestAnimationFrame(animateParticles);
-      }
-      animateParticles();
-    }
-    // 3D Animation with Three.js (Charts, Coins, Orbiting Coins, no Egg)
-    function initThreeJS() {
-      const canvas = document.getElementById('threeCanvas');
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-      const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
-      renderer.setSize(window.innerWidth, window.innerHeight);
-
-      // Background Charts (Highly Visible)
-      const chartGeometry = new THREE.PlaneGeometry(5, 3);
-      const chartMaterial = new THREE.MeshBasicMaterial({ color: 0x00FFFF, wireframe: true, opacity: 0.8, transparent: true });
-      const charts = [];
-      for (let i = 0; i < 15; i++) {
-        const chart = new THREE.Mesh(chartGeometry, chartMaterial);
-        chart.position.set(
-          (Math.random() - 0.5) * 40,
-          (Math.random() - 0.5) * 30,
-          (Math.random() - 0.5) * 10 - 10
-        );
-        chart.userData = { speed: Math.random() * 0.08 + 0.04, baseY: chart.position.y };
-        scene.add(chart);
-        charts.push(chart);
-      }
-
-      // Coins Animation (Bright and Visible)
-      const coins = [];
-      const coinSymbols = ['₿', 'Ξ', 'X', 'B'];
-      const coinColors = [0xFFCC00, 0x00CCFF, 0xFFFFFF, 0xFFFF00];
-      coinSymbols.forEach((symbol, index) => {
-        const coinGeometry = new THREE.TextGeometry(symbol, { size: 2, height: 0.5 });
-        const coinMaterial = new THREE.MeshBasicMaterial({ color: coinColors[index] });
-        const coin = new THREE.Mesh(coinGeometry, coinMaterial);
-        coin.position.set(0, 0, 0);
-        coin.visible = false;
-        coin.userData = { speedY: Math.random() * 0.08 + 0.04 };
-        scene.add(coin);
-        coins.push(coin);
-      });
-
-      // 3D Crypto Orbit Animation
-      const orbitCoins = [];
-      const orbitSymbols = ['₿', 'Ξ', 'X', 'B'];
-      orbitSymbols.forEach((symbol, index) => {
-        const orbitGeometry = new THREE.TextGeometry(symbol, { size: 1.5, height: 0.3 });
-        const orbitMaterial = new THREE.MeshBasicMaterial({ color: coinColors[index] });
-        const orbitCoin = new THREE.Mesh(orbitGeometry, orbitMaterial);
-        orbitCoin.userData = { angle: index * (Math.PI / 2), radius: 15 };
-        scene.add(orbitCoin);
-        orbitCoins.push(orbitCoin);
-      });
-
-      camera.position.z = 25;
-
-      let coinsFlying = false;
-
-      function animate() {
-        requestAnimationFrame(animate);
-
-        // Animate Background Charts
-        charts.forEach(chart => {
-          chart.position.y = chart.userData.baseY + Math.sin(Date.now() * chart.userData.speed * 0.001) * 10;
-          chart.rotation.z += 0.02;
-        });
-
-        // Coins Fly to Top
-        if (coinsFlying) {
-          coins.forEach(coin => {
-            coin.position.y += coin.userData.speedY;
-            coin.rotation.x += 0.03;
-            coin.rotation.y += 0.03;
-            if (coin.position.y > 25) coin.visible = false;
-          });
-        }
-
-        // Orbiting Coins
-        orbitCoins.forEach(coin => {
-          coin.userData.angle += 0.02;
-          coin.position.x = Math.cos(coin.userData.angle) * coin.userData.radius;
-          coin.position.z = Math.sin(coin.userData.angle) * coin.userData.radius - 10;
-          coin.rotation.y += 0.03;
-        });
-
-        renderer.render(scene, camera);
-      }
-      animate();
-
-      window.addEventListener('resize', () => {
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-      });
-    }
-    // Crypto Price Ticker
     function updateTicker() {
       fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,binancecoin&vs_currencies=usd')
         .then(response => response.json())
@@ -513,7 +200,6 @@
         })
         .catch(() => document.getElementById('price-ticker').innerHTML = 'Price data unavailable');
     }
-    // Visitor Counter
     function updateVisitorCount() {
       let count = localStorage.getItem('visitorCount') || 0;
       count++;
@@ -523,11 +209,11 @@
     window.onload = () => {
       initAuth0();
       startCountdown();
-      initParticles();
-      initThreeJS();
       updateTicker();
-      setInterval(updateTicker, 30000); // Update every 30 seconds
+      setInterval(updateTicker, 30000);
       updateVisitorCount();
     }
-  </script>  <!-- Triggered rebuild to refresh deployment --> <!-- Ownership Verified: Tārak-Ashwin-011 | Digital Signature Embedded -->  <!-- Ownership Verified: Tārak-Ashwin-011 | Digital Signature Embedded --></body>
+  </script>
+
+</body>
 </html>
