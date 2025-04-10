@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,50 +6,98 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Legacy of Tārak-Ashwin-011</title>
+  <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
   <style>
     html { scroll-behavior: smooth; }
-    body { margin: 0; font-family: 'Ubuntu', sans-serif; background: #000; color: #0ff; padding: 0; }
-    h1, h2, h3 { font-family: 'Orbitron', sans-serif; color: #00ffe0; }
-    .container { max-width: 900px; margin: auto; padding: 30px; background: #0a0a0a; color: #fff; }
-    .navbar { position: sticky; top: 0; background: #000; padding: 10px 0; text-align: center; border-bottom: 1px solid #0ff; z-index: 1000; }
-    .navbar a { margin: 0 10px; text-decoration: none; color: #0ff; font-weight: bold; }
+    body { margin: 0; font-family: 'Ubuntu', sans-serif; background: #ffffff; color: #000; padding: 20px; }
+    h1, h2, h3 { font-family: 'Orbitron', sans-serif; color: #000; }
+    .container { max-width: 900px; margin: auto; padding: 30px; background: #ffffff; }
+    .login-buttons { margin-top: 30px; }
+    button {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+      font-size: 16px;
+      font-weight: bold;
+      color: #000;
+      background: none;
+      border: 1px solid #000;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    button:hover { transform: scale(1.05); background: #f2f2f2; }
+    .coin-launch-button {
+      background: none;
+      border: none;
+      font-size: 18px;
+      font-weight: bold;
+      color: #000;
+      text-align: center;
+      cursor: pointer;
+      margin: 30px 0;
+      animation: pulse 1.8s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.05); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.8; }
+    }
+    section {
+      background: #f7f7f7;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 20px 0;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.85em;
+      margin-top: 40px;
+      color: #666;
+    }
+    ul li { margin-bottom: 8px; }
+    ul li:hover::after { content: " - Resonance node detail."; color: #999; font-size: 0.8em; }
+    .crypto-buttons button {
+      display: inline-block;
+      width: auto;
+      padding: 8px 12px;
+      margin: 5px;
+      font-size: 14px;
+      background: none;
+      color: #000;
+      border: 1px solid #000;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .crypto-buttons button:hover { transform: scale(1.05); background: #eee; }
+    .navbar {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      padding: 10px 0;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+      z-index: 1000;
+    }
+    .navbar a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+    }
     .navbar a:hover { text-decoration: underline; }
-    .login-buttons, .crypto-buttons { margin-top: 30px; text-align: center; }
-    button { padding: 15px; margin: 10px; font-size: 16px; color: #000; background: #0ff; border: none; border-radius: 8px; cursor: pointer; transition: 0.3s; }
-    button:hover { background: #00cccc; }
-    .countdown { font-size: 20px; font-weight: bold; margin: 20px 0; text-align: center; }
-    section { background: #111; padding: 20px; border-radius: 10px; margin: 20px 0; }
-    footer { text-align: center; font-size: 0.9em; padding: 20px; color: #999; }
-    .intro-zone { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: radial-gradient(#003333, #000); }
-    .intro-orb { width: 20px; height: 20px; background: #0ff; border-radius: 50%; animation: orbZoom 3s forwards; }
-    .intro-text { font-size: 1.5em; opacity: 0; animation: fadeIn 2s ease 1s forwards; }
-    .floating-coins { display: flex; justify-content: center; gap: 15px; padding-top: 30px; animation: fadeIn 2s ease 3s forwards; }
-    .floating-coins img { width: 50px; animation: float 4s ease-in-out infinite; }
-    .coin-rise { text-align: center; margin-top: 30px; animation: fadeIn 2s ease 5s forwards; }
-    .coin-rise img { width: 80px; animation: riseUp 3s ease forwards; }
-    @keyframes orbZoom { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(150); opacity: 0; } }
-    @keyframes fadeIn { to { opacity: 1; } }
-    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-    @keyframes riseUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .countdown {
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      margin: 20px 0;
+    }
   </style>
 </head>
 <body>
-  <div class="intro-zone">
-    <div class="intro-orb"></div>
-    <div class="intro-text">Entering the Decentralized Realm...</div>
-    <div class="floating-coins">
-      <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.svg" alt="BTC">
-      <img src="https://cryptologos.cc/logos/ethereum-eth-logo.svg" alt="ETH">
-      <img src="https://cryptologos.cc/logos/solana-sol-logo.svg" alt="SOL">
-      <img src="https://cryptologos.cc/logos/xrp-xrp-logo.svg" alt="XRP">
-    </div>
-    <div class="coin-rise">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Bitcoin.png/240px-Bitcoin.png" alt="Your Coin" />
-      <p>“Come and buy me — I am the future.”</p>
-    </div>
-  </div>
-
   <div class="navbar">
     <a href="#top">Home</a>
     <a href="#nodes">Nodes</a>
@@ -56,7 +105,6 @@
     <a href="#charts">Charts</a>
     <a href="#contact">Contact</a>
   </div>
-
   <div class="container" id="top">
     <h1>The Legacy of Tārak-Ashwin-011</h1>
     <p>Welcome. This site is a living monument to the symbolic journey...</p>
@@ -98,7 +146,7 @@
 
     <section id="charts">
       <h2>Live Cryptocurrency Charts</h2>
-      <div class="crypto-buttons">
+      <div class="crypto-buttons" style="text-align: center;">
         <button onclick="updateChart('BINANCE:BTCUSDT')">BTC</button>
         <button onclick="updateChart('BINANCE:ETHUSDT')">ETH</button>
         <button onclick="updateChart('BINANCE:XRPUSDT')">XRP</button>
@@ -116,8 +164,8 @@
 
     <section>
       <h2>Disclaimer</h2>
-      <p><strong>Copyright Notice:</strong> All content on this website is protected under international intellectual property and cyber law.</p>
-      <p>This website is monitored. Developer activity and unauthorized access attempts are tracked. Violators will be prosecuted under applicable laws.</p>
+      <p><strong>Copyright Notice:</strong> All content on this website is protected under international intellectual property and cyber law. Reproduction, copying, screen recording, redistribution, or mirroring of this content is strictly prohibited without explicit permission.</p>
+      <p>This website is monitored. Developer activity and unauthorized access attempts are tracked. Violators will be prosecuted under applicable sections of international digital protection laws including the IT Act, DMCA, and GDPR regulations.</p>
     </section>
 
     <footer>
@@ -125,7 +173,6 @@
     </footer>
   </div>
 
-  <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
   <script>
     let auth0Client;
     async function initAuth0() {
@@ -135,21 +182,17 @@
         redirect_uri: window.location.href
       });
     }
-    initAuth0();
-
     async function loginWithProvider(connectionName) {
       if (!auth0Client) return;
       await auth0Client.loginWithRedirect({ authorizationParams: { connection: connectionName } });
     }
-
     function updateChart(symbol) {
       const base = "https://www.tradingview.com/widgetembed/?frameElementId=tradingview_widget";
       document.getElementById('cryptoChartFrame').src = `${base}&symbol=${encodeURIComponent(symbol)}&interval=15&theme=dark`;
     }
-
     function startCountdown() {
       const launchDate = new Date('2025-05-15T12:00:00').getTime();
-      const timer = setInterval(() => {
+      const timer = setInterval(function() {
         const now = new Date().getTime();
         const dist = launchDate - now;
         if (dist < 0) {
@@ -161,10 +204,13 @@
         const h = Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const m = Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60));
         const s = Math.floor((dist % (1000 * 60)) / 1000);
-        document.getElementById("countdown").innerHTML = `${d}d ${h}h ${m}m ${s}s`;
+        document.getElementById("countdown").innerHTML = `${d}d ${h}h ${m}m ${s}s until launch`;
       }, 1000);
     }
-    startCountdown();
+    window.onload = () => {
+      initAuth0();
+      startCountdown();
+    }
   </script>
 </body>
 </html>
