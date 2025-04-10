@@ -10,22 +10,22 @@
     body {
       margin: 0;
       font-family: 'Ubuntu', sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: #fff;
+      background: #ffffff;
+      color: #000;
       padding: 20px;
     }
     h1, h2, h3 {
       font-family: 'Orbitron', sans-serif;
-      color: #00ffe0;
-      text-shadow: 0 0 10px #00ffe0;
+      color: #000;
+      text-shadow: none;
     }
     .container {
       max-width: 900px;
       margin: auto;
       padding: 30px;
-      background: rgba(255,255,255,0.05);
+      background: #ffffff;
       border-radius: 20px;
-      box-shadow: 0 0 30px rgba(0,255,255,0.2);
+      box-shadow: none;
     }
     .login-buttons {
       margin-top: 30px;
@@ -37,20 +37,35 @@
       margin: 10px 0;
       font-size: 16px;
       font-weight: bold;
-      color: #fff;
-      background: linear-gradient(to right, #00c6ff, #0072ff);
-      border: none;
+      color: #000;
+      background: none;
+      border: 1px solid #000;
       border-radius: 12px;
       cursor: pointer;
-      box-shadow: 0 0 15px #00ffe0;
       transition: transform 0.2s;
     }
     button:hover {
       transform: scale(1.05);
-      background: linear-gradient(to right, #0072ff, #00c6ff);
+      background: #f2f2f2;
+    }
+    .coin-launch-button {
+      background: none;
+      border: none;
+      font-size: 18px;
+      font-weight: bold;
+      color: #000;
+      text-align: center;
+      cursor: pointer;
+      margin: 30px 0;
+      animation: pulse 1.8s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.05); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.8; }
     }
     section {
-      background: rgba(255, 255, 255, 0.07);
+      background: #f7f7f7;
       padding: 20px;
       border-radius: 10px;
       margin: 20px 0;
@@ -59,28 +74,27 @@
       text-align: center;
       font-size: 0.85em;
       margin-top: 40px;
-      color: #aaa;
+      color: #666;
     }
     ul li {
       margin-bottom: 8px;
     }
-    /* Styles for the crypto chart buttons */
     .crypto-buttons button {
       display: inline-block;
       width: auto;
       padding: 8px 12px;
       margin: 5px;
       font-size: 14px;
-      background: linear-gradient(to right, #00c6ff, #0072ff);
-      border: none;
+      background: none;
+      color: #000;
+      border: 1px solid #000;
       border-radius: 8px;
       cursor: pointer;
-      box-shadow: 0 0 10px #00ffe0;
       transition: transform 0.2s;
     }
     .crypto-buttons button:hover {
       transform: scale(1.05);
-      background: linear-gradient(to right, #0072ff, #00c6ff);
+      background: #eee;
     }
   </style>
 </head>
@@ -88,6 +102,12 @@
   <div class="container">
     <h1>The Legacy of Tārak-Ashwin-011</h1>
     <p>Welcome. This site is a living monument to the symbolic journey of Tārak-Ashwin-011—one of the first to walk the Gatepath alignment across India's hidden resonance grid. All content is visible, but interaction requires login.</p>
+
+    <!-- ANIMATED COIN LAUNCH BUTTON -->
+    <div style="text-align: center;">
+      <button class="coin-launch-button">TRARANKAASWIN011 COIN LAUNCHING SOON</button>
+    </div>
+
     <section>
       <h2>Disclaimer</h2>
       <p>This content is protected intellectual property. Unauthorized reproduction, redistribution, or developer tool access is prohibited and monitored.</p>
@@ -129,7 +149,6 @@
       <button onclick="loginWithProvider('linkedin')">Login with LinkedIn</button>
     </div>
 
-    <!-- New Live Cryptocurrency Charts Section -->
     <section>
       <h2>Live Cryptocurrency Charts</h2>
       <div class="crypto-buttons" style="text-align: center; margin-bottom: 15px;">
@@ -146,18 +165,17 @@
           allowfullscreen>
         </iframe>
       </div>
-      <p style="font-size: 0.85em; color: #ccc; text-align: center;">Live chart powered by TradingView. Click on a crypto button above to change the chart view.</p>
+      <p style="font-size: 0.85em; color: #333; text-align: center;">Live chart powered by TradingView. Click on a crypto button above to change the chart view.</p>
     </section>
 
     <footer>
       <p>© 2025 Tārak-Ashwin-011. All rights reserved.<br>
       Developer tools activity is monitored to prevent unauthorized access.</p>
     </footer>
-
   </div>
+
   <script>
     let auth0Client;
-
     async function initAuth0() {
       auth0Client = await createAuth0Client({
         domain: 'dev-1qtbe4kdvjm4tazb.us.auth0.com',
