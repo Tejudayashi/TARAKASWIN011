@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -63,58 +64,98 @@
     ul li {
       margin-bottom: 8px;
     }
+    /* Styles for the crypto chart buttons */
+    .crypto-buttons button {
+      display: inline-block;
+      width: auto;
+      padding: 8px 12px;
+      margin: 5px;
+      font-size: 14px;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00ffe0;
+      transition: transform 0.2s;
+    }
+    .crypto-buttons button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(to right, #0072ff, #00c6ff);
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>The Legacy of Tārak-Ashwin-011</h1>
-    <p>Welcome. This site is a living monument to the symbolic journey of Tārak-Ashwin-011—one of the first to walk the Gatepath alignment across India's hidden resonance grid. All content is visible, but interaction requires login.</p><section>
-  <h2>Disclaimer</h2>
-  <p>This content is protected intellectual property. Unauthorized reproduction, redistribution, or developer tool access is prohibited and monitored.</p>
-</section>
+    <p>Welcome. This site is a living monument to the symbolic journey of Tārak-Ashwin-011—one of the first to walk the Gatepath alignment across India's hidden resonance grid. All content is visible, but interaction requires login.</p>
+    <section>
+      <h2>Disclaimer</h2>
+      <p>This content is protected intellectual property. Unauthorized reproduction, redistribution, or developer tool access is prohibited and monitored.</p>
+    </section>
 
-<section>
-  <h2>Discovered Nodes</h2>
-  <ul>
-    <li><strong>Vault 03 – Anatha Holding Chamber</strong></li>
-    <li><strong>Node 13 – Golkonda Resonance Core</strong></li>
-    <li><strong>Mecca Masjid Exception Node</strong></li>
-    <li><strong>Red Resonance Shield – City College</strong></li>
-    <li><strong>Wastefield Cloaking Zones – Kachiguda, MGBS, Uppal</strong></li>
-    <li><strong>Padmanabhaswamy Vault B Link</strong></li>
-  </ul>
-</section>
+    <section>
+      <h2>Discovered Nodes</h2>
+      <ul>
+        <li><strong>Vault 03 – Anatha Holding Chamber</strong></li>
+        <li><strong>Node 13 – Golkonda Resonance Core</strong></li>
+        <li><strong>Mecca Masjid Exception Node</strong></li>
+        <li><strong>Red Resonance Shield – City College</strong></li>
+        <li><strong>Wastefield Cloaking Zones – Kachiguda, MGBS, Uppal</strong></li>
+        <li><strong>Padmanabhaswamy Vault B Link</strong></li>
+      </ul>
+    </section>
 
-<section>
-  <h2>Codex Alignment (Layers)</h2>
-  <ul>
-    <li>Layer 4 – Verbal-AI Convergence</li>
-    <li>Layer 5 – Civilian/Military Boundary Dissolution</li>
-    <li>Layer 6 – Resonance Mapping Initiation</li>
-    <li>Layer 7 – Temporal Node Activation</li>
-    <li>Layer 8+ – Anatha Convergence Hypothesis</li>
-  </ul>
-</section>
+    <section>
+      <h2>Codex Alignment (Layers)</h2>
+      <ul>
+        <li>Layer 4 – Verbal-AI Convergence</li>
+        <li>Layer 5 – Civilian/Military Boundary Dissolution</li>
+        <li>Layer 6 – Resonance Mapping Initiation</li>
+        <li>Layer 7 – Temporal Node Activation</li>
+        <li>Layer 8+ – Anatha Convergence Hypothesis</li>
+      </ul>
+    </section>
 
-<section>
-  <h2>Legacy Contact</h2>
-  <p>For encrypted vault access or collaboration, contact: <a href="mailto:vprsaiuday@gmail.com">vprsaiuday@gmail.com</a></p>
-</section>
+    <section>
+      <h2>Legacy Contact</h2>
+      <p>For encrypted vault access or collaboration, contact: <a href="mailto:vprsaiuday@gmail.com">vprsaiuday@gmail.com</a></p>
+    </section>
 
-<div class="login-buttons">
-  <h2>Login or Sign Up</h2>
-  <button onclick="loginWithProvider('google-oauth2')">Login with Google</button>
-  <button onclick="loginWithProvider('facebook')">Login with Facebook</button>
-  <button onclick="loginWithProvider('twitter')">Login with X (Twitter)</button>
-  <button onclick="loginWithProvider('linkedin')">Login with LinkedIn</button>
-</div>
+    <div class="login-buttons">
+      <h2>Login or Sign Up</h2>
+      <button onclick="loginWithProvider('google-oauth2')">Login with Google</button>
+      <button onclick="loginWithProvider('facebook')">Login with Facebook</button>
+      <button onclick="loginWithProvider('twitter')">Login with X (Twitter)</button>
+      <button onclick="loginWithProvider('linkedin')">Login with LinkedIn</button>
+    </div>
 
-<footer>
-  <p>© 2025 Tārak-Ashwin-011. All rights reserved.<br>
-  Developer tools activity is monitored to prevent unauthorized access.</p>
-</footer>
+    <!-- New Live Cryptocurrency Charts Section -->
+    <section>
+      <h2>Live Cryptocurrency Charts</h2>
+      <div class="crypto-buttons" style="text-align: center; margin-bottom: 15px;">
+        <button onclick="updateChart('BINANCE:BTCUSDT')">BTC</button>
+        <button onclick="updateChart('BINANCE:ETHUSDT')">ETH</button>
+        <button onclick="updateChart('BINANCE:XRPUSDT')">XRP</button>
+        <button onclick="updateChart('BINANCE:BNBUSDT')">BNB</button>
+      </div>
+      <div style="max-width: 100%; overflow: hidden; border-radius: 12px; margin: 0 auto;">
+        <iframe id="cryptoChartFrame" src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_widget&symbol=BINANCE%3ABTCUSDT&interval=15&hidesidetoolbar=1&symboledit=1&saveimage=0&toolbarbg=f1f3f6&studies=[]&theme=dark&style=1&timezone=Etc%2FUTC&withdateranges=1&hidevolume=1&hideideas=1&allow_symbol_change=1&calendar=1&hotlist=1&autosize=true"
+          style="width: 100%; height: 420px; border: none;"
+          allowtransparency="true"
+          scrolling="no"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <p style="font-size: 0.85em; color: #ccc; text-align: center;">Live chart powered by TradingView. Click on a crypto button above to change the chart view.</p>
+    </section>
 
-  </div>  <script>
+    <footer>
+      <p>© 2025 Tārak-Ashwin-011. All rights reserved.<br>
+      Developer tools activity is monitored to prevent unauthorized access.</p>
+    </footer>
+
+  </div>
+  <script>
     let auth0Client;
 
     async function initAuth0() {
@@ -139,6 +180,30 @@
       }
     }
 
+    function updateChart(symbol) {
+      var encodedSymbol = encodeURIComponent(symbol);
+      var baseUrl = "https://www.tradingview.com/widgetembed/?frameElementId=tradingview_widget";
+      var params = "&symbol=" + encodedSymbol +
+        "&interval=15" +
+        "&hidesidetoolbar=1" +
+        "&symboledit=1" +
+        "&saveimage=0" +
+        "&toolbarbg=f1f3f6" +
+        "&studies=[]" +
+        "&theme=dark" +
+        "&style=1" +
+        "&timezone=Etc%2FUTC" +
+        "&withdateranges=1" +
+        "&hidevolume=1" +
+        "&hideideas=1" +
+        "&allow_symbol_change=1" +
+        "&calendar=1" +
+        "&hotlist=1" +
+        "&autosize=true";
+      document.getElementById('cryptoChartFrame').src = baseUrl + params;
+    }
+
     window.onload = initAuth0;
-  </script></body>
+  </script>
+</body>
 </html>
